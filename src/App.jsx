@@ -34,6 +34,11 @@ function App() {
         placeholder="Enter a task..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            addTask();
+          }
+        }}
         />
         <button onClick={addTask}>Add</button>
       </div>
@@ -51,6 +56,9 @@ function App() {
           </li>
         ))}
       </ul>
+      <div className="task-count">
+        You have {tasks.length} pending task{tasks.length !== 1 ? 's' : ''}.
+      </div>
     </div>
   )
 }
